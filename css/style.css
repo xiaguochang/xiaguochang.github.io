@@ -583,9 +583,9 @@ body {
   padding: 10px 0;
   color: #666;
   letter-spacing: 5px;
+  cursor: text;
 }
 .header-nav {
-  cursor: pointer;
   margin: 8px 0;
 }
 .header-nav .social {
@@ -597,6 +597,9 @@ body {
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
   position: relative;
+}
+.header-nav .social a:last-child {
+  margin-right: 0;
 }
 .header-nav .social a:hover {
   color: #0cc;
