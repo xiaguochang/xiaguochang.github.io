@@ -161,9 +161,10 @@
         tags.css('display', 'none');
         categories.css('display', 'block');
         e.stopPropagation();
-        if (sideMenuBoxIsOpen) {
+        if (sideMenuBoxIsOpen && sideMenuBoxIsOpen !== 'categories') {
+            sideMenuBox.css('background','rgba(0, 180, 255, 0.17)');
             Blog.showSidebarBox(true);
-            sideMenuBoxIsOpen = false;
+            sideMenuBoxIsOpen = 'categories';
         } else {
             Blog.showSidebarBox(false);
             sideMenuBoxIsOpen = true;
@@ -174,9 +175,10 @@
         tags.css('display', 'block');
         categories.css('display', 'none');
         e.stopPropagation();
-        if (sideMenuBoxIsOpen) {
+        if (sideMenuBoxIsOpen && sideMenuBoxIsOpen !== 'tags') {
+            sideMenuBox.css('background','rgba(0, 0, 0, 0.17)');
             Blog.showSidebarBox(true);
-            sideMenuBoxIsOpen = false;
+            sideMenuBoxIsOpen = 'tags';
         } else {
             Blog.showSidebarBox(false);
             sideMenuBoxIsOpen = true;
