@@ -1,0 +1,39 @@
+.switch {
+    display: block;
+    width: 50px;
+    height: 25px;
+    border: 1px solid #999;
+    -webkit-border-radius: 13.5px;
+       -moz-border-radius: 13.5px;
+            border-radius: 13.5px;
+    position: relative;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    cursor: pointer;
+}
+.slider{
+    content: '';
+    width: 40%;
+    height: 80%;
+    margin: 5%;
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+            border-radius: 50%;
+    background-color: #38e638;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: left .3s;
+    -o-transition: left .3s;
+    -moz-transition: left .3s;
+    transition: left .3s;
+}
+.switch input{
+    display: none;
+}
+.switch input:checked ~ .slider{
+    left: 50%;
+    background-color: #999;
+}
