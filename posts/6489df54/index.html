@@ -3,18 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Archives: 2019/1 | XiaGuochang&#39;s Blog</title>
+  <title>查询Mysql数据库中每个表的大小 | XiaGuochang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="XiaGuochang,XiaGuochang's Blog">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="XiaGuochang&#39;s Blog">
-<meta property="og:url" content="https://xiaguochang.com/archives/2019/01/index.html">
+  <meta name="description" content="第一步：进入指定的数据库1use information_schema 第二步：查询所有数据的大小1SELECT `table_name`,DATA_LENGTH,INDEX_LENGTH FROM TABLES WHERE `table_schema`=&amp;apos;[库名]&amp;apos;; 这个表中主要大小相关的字段意思：TABLE_SCHEMA: 库名TABLE_NAME: 表名ENGINE:">
+<meta name="keywords" content="MYSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查询Mysql数据库中每个表的大小">
+<meta property="og:url" content="https://xiaguochang.com/posts/6489df54/index.html">
 <meta property="og:site_name" content="XiaGuochang&#39;s Blog">
+<meta property="og:description" content="第一步：进入指定的数据库1use information_schema 第二步：查询所有数据的大小1SELECT `table_name`,DATA_LENGTH,INDEX_LENGTH FROM TABLES WHERE `table_schema`=&amp;apos;[库名]&amp;apos;; 这个表中主要大小相关的字段意思：TABLE_SCHEMA: 库名TABLE_NAME: 表名ENGINE:">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-16T16:07:44.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XiaGuochang&#39;s Blog">
+<meta name="twitter:title" content="查询Mysql数据库中每个表的大小">
+<meta name="twitter:description" content="第一步：进入指定的数据库1use information_schema 第二步：查询所有数据的大小1SELECT `table_name`,DATA_LENGTH,INDEX_LENGTH FROM TABLES WHERE `table_schema`=&amp;apos;[库名]&amp;apos;; 这个表中主要大小相关的字段意思：TABLE_SCHEMA: 库名TABLE_NAME: 表名ENGINE:">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -98,53 +103,147 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
-  
-  
+        <section id="main" class="body-wrap"><article id="post-mysql-table-size" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/posts/4a17b156/" class="archive-article-date">
-  <time datetime="2019-01-06T08:28:17.391Z" itemprop="datePublished">01-06</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/4a17b156/">Hello World</a>
+    <h1 class="post-title" itemprop="name">
+      查询Mysql数据库中每个表的大小
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/MYSQL/">MYSQL</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-03-16
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
       
-        <div class="archive-post-footer">
+            
+            <p>第一步：<br>进入指定的数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use information_schema</span><br></pre></td></tr></table></figure></p>
+<p>第二步：<br>查询所有数据的大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT `table_name`,DATA_LENGTH,INDEX_LENGTH FROM TABLES WHERE `table_schema`=&apos;[库名]&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>这个表中主要大小相关的字段意思：<br>TABLE_SCHEMA: 库名<br>TABLE_NAME: 表名<br>ENGINE: 存储引擎<br>TABLE_ROWS: 该表记录数<br>DATA_LENGTH: 表大小（单位字节）<br>INDEX_LENGTH: 表索引大小（单位字节）</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年03月17日 00:07</p>
+        <p>原始链接： <a class="post-url" href="/posts/6489df54/" title="查询Mysql数据库中每个表的大小">https://xiaguochang.com/posts/6489df54/</a></p>
+        <footer>
+            <a href="https://xiaguochang.com">
+                <img src="/images/logo.png" alt="XiaGuochang">
+                XiaGuochang
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiaguochang.com/posts/6489df54/&title=《查询Mysql数据库中每个表的大小》 — XiaGuochang's Blog&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiaguochang.com/posts/6489df54/&title=《查询Mysql数据库中每个表的大小》 — XiaGuochang's Blog&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaguochang.com/posts/6489df54/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《查询Mysql数据库中每个表的大小》 — XiaGuochang's Blog&url=https://xiaguochang.com/posts/6489df54/&via=https://xiaguochang.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiaguochang.com/posts/6489df54/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://xiaguochang.com/posts/6489df54/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/DEMO/" class="color5">DEMO</a>
+    <a href="/tags/MYSQL/" class="color1">MYSQL</a>
       
   </li>
 
-        </div>
-      
+        </ul>
+        
+    </footer>
   </div>
 </article>
 
-  
-  
-    </div></section>
-  
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/posts/b749b54d/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">PHP二维数组根据某个键进行排序</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
 </section>
         
       </div>
