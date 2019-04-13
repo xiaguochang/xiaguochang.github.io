@@ -3,18 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Tag: HTML | XiaGuochang&#39;s Blog</title>
+  <title>PHP随机字符串 | XiaGuochang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="XiaGuochang,XiaGuochang's Blog">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="XiaGuochang&#39;s Blog">
-<meta property="og:url" content="https://xiaguochang.com/tags/HTML/index.html">
+  <meta name="description" content="12345678910111213141516171819202122232425262728/** * 获得随机字符串 * @param $length       需要的长度 * @param $multiplex    字符是否可以复用 * @param $string       随机的字符串 * @return string|bool  返回随机字符串|false */function">
+<meta name="keywords" content="PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP随机字符串">
+<meta property="og:url" content="https://xiaguochang.com/posts/bde46b03/index.html">
 <meta property="og:site_name" content="XiaGuochang&#39;s Blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728/** * 获得随机字符串 * @param $length       需要的长度 * @param $multiplex    字符是否可以复用 * @param $string       随机的字符串 * @return string|bool  返回随机字符串|false */function">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-13T15:26:07.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XiaGuochang&#39;s Blog">
+<meta name="twitter:title" content="PHP随机字符串">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728/** * 获得随机字符串 * @param $length       需要的长度 * @param $multiplex    字符是否可以复用 * @param $string       随机的字符串 * @return string|bool  返回随机字符串|false */function">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -98,129 +103,144 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
-  
-  
+        <section id="main" class="body-wrap"><article id="post-php-rand-str" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/posts/a295304e/" class="archive-article-date">
-  <time datetime="2019-03-23T15:20:25.000Z" itemprop="datePublished">03-23</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/a295304e/">CSS实现导航栏下划线跟随移动效果</a>
+    <h1 class="post-title" itemprop="name">
+      PHP随机字符串
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/PHP/">PHP</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-04-13
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
       
-        <div class="archive-post-footer">
+            
+            <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获得随机字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $length       需要的长度</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $multiplex    字符是否可以复用</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $string       随机的字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string|bool  返回随机字符串|false</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandStr</span><span class="params">($length, $multiplex = true, $string = <span class="string">'abcdefghijkmnpqrstuvwxyz0123456789ABCDEFGHIGKLMNPQRSTUVWXYZ'</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>($length &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $strlen = strlen($string);</span><br><span class="line">    <span class="keyword">if</span> (!$multiplex) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($length &gt; $strlen) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        $shuffled = str_shuffle($string);</span><br><span class="line">        $rand_str = substr($shuffled, <span class="number">0</span>, $length);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $rand_str = <span class="string">''</span>;</span><br><span class="line">        $max = $strlen<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $length; $i++) &#123;</span><br><span class="line">            $rand_str .= $string[mt_rand(<span class="number">0</span>, $max)];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $rand_str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年04月13日 23:26</p>
+        <p>原始链接： <a class="post-url" href="/posts/bde46b03/" title="PHP随机字符串">https://xiaguochang.com/posts/bde46b03/</a></p>
+        <footer>
+            <a href="https://xiaguochang.com">
+                <img src="/images/logo.png" alt="XiaGuochang">
+                XiaGuochang
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiaguochang.com/posts/bde46b03/&title=《PHP随机字符串》 — XiaGuochang's Blog&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiaguochang.com/posts/bde46b03/&title=《PHP随机字符串》 — XiaGuochang's Blog&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaguochang.com/posts/bde46b03/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP随机字符串》 — XiaGuochang's Blog&url=https://xiaguochang.com/posts/bde46b03/&via=https://xiaguochang.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiaguochang.com/posts/bde46b03/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://xiaguochang.com/posts/bde46b03/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/CSS/" class="color4">CSS</a>
-      
-    <a href="/tags/HTML/" class="color5">HTML</a>
-      
-    <a href="/tags/NAV/" class="color4">NAV</a>
+    <a href="/tags/PHP/" class="color4">PHP</a>
       
   </li>
 
-        </div>
-      
+        </ul>
+        
+    </footer>
   </div>
 </article>
 
+
+
+<nav id="article-nav">
   
+  
+    <a href="/posts/ad3385d8/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Jquery和php文件上传的进度条</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/posts/56d42c75/" class="archive-article-date">
-  <time datetime="2019-03-02T11:25:23.000Z" itemprop="datePublished">03-02</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/56d42c75/">纯CSS实现滑动开关效果</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/CSS/" class="color4">CSS</a>
-      
-    <a href="/tags/HTML/" class="color5">HTML</a>
-      
-    <a href="/tags/SWITCH/" class="color2">SWITCH</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/posts/19701066/" class="archive-article-date">
-  <time datetime="2019-02-23T14:50:23.000Z" itemprop="datePublished">02-23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/19701066/">CSS实现按钮点击波纹扩散效果</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/CSS/" class="color4">CSS</a>
-      
-    <a href="/tags/HTML/" class="color5">HTML</a>
-      
-    <a href="/tags/BUTTON/" class="color2">BUTTON</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
-
 </section>
         
       </div>
