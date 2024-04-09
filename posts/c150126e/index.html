@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PHP条形码函数 | XiaGuochang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="XiaGuochang,XiaGuochang's Blog" />
+  
+  <meta name="description" content="原函数的地址davidscotttufts&#x2F;php-barcode由于该函数中没有CODE128C的条形码，所以做了修改添加CODE128C代码如下(由于对条形码没有研究，可能会有问题) PHP1234567891011121314151617181920&#x2F;&#x2F;仅支持纯数字，偶数长度时，是code128c,奇数长度时是code128c和code128b的混合$chksum &#x3D; 105;$code_a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP条形码函数">
+<meta property="og:url" content="https://xiaguochang.github.io/posts/c150126e/index.html">
+<meta property="og:site_name" content="XiaGuochang&#39;s Blog">
+<meta property="og:description" content="原函数的地址davidscotttufts&#x2F;php-barcode由于该函数中没有CODE128C的条形码，所以做了修改添加CODE128C代码如下(由于对条形码没有研究，可能会有问题) PHP1234567891011121314151617181920&#x2F;&#x2F;仅支持纯数字，偶数长度时，是code128c,奇数长度时是code128c和code128b的混合$chksum &#x3D; 105;$code_a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-20T14:32:30.000Z">
+<meta property="article:modified_time" content="2019-04-20T14:40:42.914Z">
+<meta property="article:author" content="XiaGuochang">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <!--<video autoplay loop muted class="banner">
+        <source src="/videos/banner.mp4" type="video/mp4">
+        <div id="banner"></div>
+    </video>-->
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">XiaGuochang&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        XiaGuochang&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        这是一个技术菜鸟的博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="XiaGuochang" target="_blank" href="//xiaguochang.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/xiaguochang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-php-barcode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      PHP条形码函数
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/PHP/">PHP</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-04-20
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>原函数的地址<a target="_blank" rel="noopener" href="https://github.com/davidscotttufts/php-barcode">davidscotttufts/php-barcode</a><br>由于该函数中没有CODE128C的条形码，所以做了修改<br>添加CODE128C代码如下(由于对条形码没有研究，可能会有问题)</p>
+<h4 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//仅支持纯数字，偶数长度时，是code128c,奇数长度时是code128c和code128b的混合</span></span><br><span class="line"><span class="variable">$chksum</span> = <span class="number">105</span>;</span><br><span class="line"><span class="variable">$code_array</span> = <span class="keyword">array</span>(<span class="string">&quot;00&quot;</span>=&gt;<span class="string">&quot;212222&quot;</span>,<span class="string">&quot;01&quot;</span>=&gt;<span class="string">&quot;222122&quot;</span>,<span class="string">&quot;02&quot;</span>=&gt;<span class="string">&quot;222221&quot;</span>,<span class="string">&quot;03&quot;</span>=&gt;<span class="string">&quot;121223&quot;</span>,<span class="string">&quot;04&quot;</span>=&gt;<span class="string">&quot;121322&quot;</span>,<span class="string">&quot;05&quot;</span>=&gt;<span class="string">&quot;131222&quot;</span>,<span class="string">&quot;06&quot;</span>=&gt;<span class="string">&quot;122213&quot;</span>,<span class="string">&quot;07&quot;</span>=&gt;<span class="string">&quot;122312&quot;</span>,<span class="string">&quot;08&quot;</span>=&gt;<span class="string">&quot;132212&quot;</span>,<span class="string">&quot;09&quot;</span>=&gt;<span class="string">&quot;221213&quot;</span>,<span class="string">&quot;10&quot;</span>=&gt;<span class="string">&quot;221312&quot;</span>,<span class="string">&quot;11&quot;</span>=&gt;<span class="string">&quot;231212&quot;</span>,<span class="string">&quot;12&quot;</span>=&gt;<span class="string">&quot;112232&quot;</span>,<span class="string">&quot;13&quot;</span>=&gt;<span class="string">&quot;122132&quot;</span>,<span class="string">&quot;14&quot;</span>=&gt;<span class="string">&quot;122231&quot;</span>,<span class="string">&quot;15&quot;</span>=&gt;<span class="string">&quot;113222&quot;</span>,<span class="string">&quot;16&quot;</span>=&gt;<span class="string">&quot;123122&quot;</span>,<span class="string">&quot;17&quot;</span>=&gt;<span class="string">&quot;123221&quot;</span>,<span class="string">&quot;18&quot;</span>=&gt;<span class="string">&quot;223211&quot;</span>,<span class="string">&quot;19&quot;</span>=&gt;<span class="string">&quot;221132&quot;</span>,<span class="string">&quot;20&quot;</span>=&gt;<span class="string">&quot;221231&quot;</span>,<span class="string">&quot;21&quot;</span>=&gt;<span class="string">&quot;213212&quot;</span>,<span class="string">&quot;22&quot;</span>=&gt;<span class="string">&quot;223112&quot;</span>,<span class="string">&quot;23&quot;</span>=&gt;<span class="string">&quot;312131&quot;</span>,<span class="string">&quot;24&quot;</span>=&gt;<span class="string">&quot;311222&quot;</span>,<span class="string">&quot;25&quot;</span>=&gt;<span class="string">&quot;321122&quot;</span>,<span class="string">&quot;26&quot;</span>=&gt;<span class="string">&quot;321221&quot;</span>,<span class="string">&quot;27&quot;</span>=&gt;<span class="string">&quot;312212&quot;</span>,<span class="string">&quot;28&quot;</span>=&gt;<span class="string">&quot;322112&quot;</span>,<span class="string">&quot;29&quot;</span>=&gt;<span class="string">&quot;322211&quot;</span>,<span class="string">&quot;30&quot;</span>=&gt;<span class="string">&quot;212123&quot;</span>,<span class="string">&quot;31&quot;</span>=&gt;<span class="string">&quot;212321&quot;</span>,<span class="string">&quot;32&quot;</span>=&gt;<span class="string">&quot;232121&quot;</span>,<span class="string">&quot;33&quot;</span>=&gt;<span class="string">&quot;111323&quot;</span>,<span class="string">&quot;34&quot;</span>=&gt;<span class="string">&quot;131123&quot;</span>,<span class="string">&quot;35&quot;</span>=&gt;<span class="string">&quot;131321&quot;</span>,<span class="string">&quot;36&quot;</span>=&gt;<span class="string">&quot;112313&quot;</span>,<span class="string">&quot;37&quot;</span>=&gt;<span class="string">&quot;132113&quot;</span>,<span class="string">&quot;38&quot;</span>=&gt;<span class="string">&quot;132311&quot;</span>,<span class="string">&quot;39&quot;</span>=&gt;<span class="string">&quot;211313&quot;</span>,<span class="string">&quot;40&quot;</span>=&gt;<span class="string">&quot;231113&quot;</span>,<span class="string">&quot;41&quot;</span>=&gt;<span class="string">&quot;231311&quot;</span>,<span class="string">&quot;42&quot;</span>=&gt;<span class="string">&quot;112133&quot;</span>,<span class="string">&quot;43&quot;</span>=&gt;<span class="string">&quot;112331&quot;</span>,<span class="string">&quot;44&quot;</span>=&gt;<span class="string">&quot;132131&quot;</span>,<span class="string">&quot;45&quot;</span>=&gt;<span class="string">&quot;113123&quot;</span>,<span class="string">&quot;46&quot;</span>=&gt;<span class="string">&quot;113321&quot;</span>,<span class="string">&quot;47&quot;</span>=&gt;<span class="string">&quot;133121&quot;</span>,<span class="string">&quot;48&quot;</span>=&gt;<span class="string">&quot;313121&quot;</span>,<span class="string">&quot;49&quot;</span>=&gt;<span class="string">&quot;211331&quot;</span>,<span class="string">&quot;50&quot;</span>=&gt;<span class="string">&quot;231131&quot;</span>,<span class="string">&quot;51&quot;</span>=&gt;<span class="string">&quot;213113&quot;</span>,<span class="string">&quot;52&quot;</span>=&gt;<span class="string">&quot;213311&quot;</span>,<span class="string">&quot;53&quot;</span>=&gt;<span class="string">&quot;213131&quot;</span>,<span class="string">&quot;54&quot;</span>=&gt;<span class="string">&quot;311123&quot;</span>,<span class="string">&quot;55&quot;</span>=&gt;<span class="string">&quot;311321&quot;</span>,<span class="string">&quot;56&quot;</span>=&gt;<span class="string">&quot;331121&quot;</span>,<span class="string">&quot;57&quot;</span>=&gt;<span class="string">&quot;312113&quot;</span>,<span class="string">&quot;58&quot;</span>=&gt;<span class="string">&quot;312311&quot;</span>,<span class="string">&quot;59&quot;</span>=&gt;<span class="string">&quot;332111&quot;</span>,<span class="string">&quot;60&quot;</span>=&gt;<span class="string">&quot;314111&quot;</span>,<span class="string">&quot;61&quot;</span>=&gt;<span class="string">&quot;221411&quot;</span>,<span class="string">&quot;62&quot;</span>=&gt;<span class="string">&quot;431111&quot;</span>,<span class="string">&quot;63&quot;</span>=&gt;<span class="string">&quot;111224&quot;</span>,<span class="string">&quot;64&quot;</span>=&gt;<span class="string">&quot;111422&quot;</span>,<span class="string">&quot;65&quot;</span>=&gt;<span class="string">&quot;121124&quot;</span>,<span class="string">&quot;66&quot;</span>=&gt;<span class="string">&quot;121421&quot;</span>,<span class="string">&quot;67&quot;</span>=&gt;<span class="string">&quot;141122&quot;</span>,<span class="string">&quot;68&quot;</span>=&gt;<span class="string">&quot;141221&quot;</span>,<span class="string">&quot;69&quot;</span>=&gt;<span class="string">&quot;112214&quot;</span>,<span class="string">&quot;70&quot;</span>=&gt;<span class="string">&quot;112412&quot;</span>,<span class="string">&quot;71&quot;</span>=&gt;<span class="string">&quot;122114&quot;</span>,<span class="string">&quot;72&quot;</span>=&gt;<span class="string">&quot;122411&quot;</span>,<span class="string">&quot;73&quot;</span>=&gt;<span class="string">&quot;142112&quot;</span>,<span class="string">&quot;74&quot;</span>=&gt;<span class="string">&quot;142211&quot;</span>,<span class="string">&quot;75&quot;</span>=&gt;<span class="string">&quot;241211&quot;</span>,<span class="string">&quot;76&quot;</span>=&gt;<span class="string">&quot;221114&quot;</span>,<span class="string">&quot;77&quot;</span>=&gt;<span class="string">&quot;413111&quot;</span>,<span class="string">&quot;78&quot;</span>=&gt;<span class="string">&quot;241112&quot;</span>,<span class="string">&quot;79&quot;</span>=&gt;<span class="string">&quot;134111&quot;</span>,<span class="string">&quot;80&quot;</span>=&gt;<span class="string">&quot;111242&quot;</span>,<span class="string">&quot;81&quot;</span>=&gt;<span class="string">&quot;121142&quot;</span>,<span class="string">&quot;82&quot;</span>=&gt;<span class="string">&quot;121241&quot;</span>,<span class="string">&quot;83&quot;</span>=&gt;<span class="string">&quot;114212&quot;</span>,<span class="string">&quot;84&quot;</span>=&gt;<span class="string">&quot;124112&quot;</span>,<span class="string">&quot;85&quot;</span>=&gt;<span class="string">&quot;124211&quot;</span>,<span class="string">&quot;86&quot;</span>=&gt;<span class="string">&quot;411212&quot;</span>,<span class="string">&quot;87&quot;</span>=&gt;<span class="string">&quot;421112&quot;</span>,<span class="string">&quot;88&quot;</span>=&gt;<span class="string">&quot;421211&quot;</span>,<span class="string">&quot;89&quot;</span>=&gt;<span class="string">&quot;212141&quot;</span>,<span class="string">&quot;90&quot;</span>=&gt;<span class="string">&quot;214121&quot;</span>,<span class="string">&quot;91&quot;</span>=&gt;<span class="string">&quot;412121&quot;</span>,<span class="string">&quot;92&quot;</span>=&gt;<span class="string">&quot;111143&quot;</span>,<span class="string">&quot;93&quot;</span>=&gt;<span class="string">&quot;111341&quot;</span>,<span class="string">&quot;94&quot;</span>=&gt;<span class="string">&quot;131141&quot;</span>,<span class="string">&quot;95&quot;</span>=&gt;<span class="string">&quot;114113&quot;</span>,<span class="string">&quot;96&quot;</span>=&gt;<span class="string">&quot;114311&quot;</span>,<span class="string">&quot;97&quot;</span>=&gt;<span class="string">&quot;411113&quot;</span>,<span class="string">&quot;98&quot;</span>=&gt;<span class="string">&quot;411311&quot;</span>,<span class="string">&quot;99&quot;</span>=&gt;<span class="string">&quot;113141&quot;</span>,<span class="string">&quot;CODE B&quot;</span>=&gt;<span class="string">&quot;114131&quot;</span>,<span class="string">&quot;CODE A&quot;</span>=&gt;<span class="string">&quot;311141&quot;</span>,<span class="string">&quot;FNC 1&quot;</span>=&gt;<span class="string">&quot;411131&quot;</span>,<span class="string">&quot;Start A&quot;</span>=&gt;<span class="string">&quot;211412&quot;</span>,<span class="string">&quot;Start B&quot;</span>=&gt;<span class="string">&quot;211214&quot;</span>,<span class="string">&quot;Start C&quot;</span>=&gt;<span class="string">&quot;211232&quot;</span>,<span class="string">&quot;Stop&quot;</span>=&gt;<span class="string">&quot;2331112&quot;</span>);</span><br><span class="line"><span class="variable">$code_keys</span> = <span class="title function_ invoke__">array_keys</span>(<span class="variable">$code_array</span>);</span><br><span class="line"><span class="variable">$code_values</span> = <span class="title function_ invoke__">array_flip</span>(<span class="variable">$code_keys</span>);</span><br><span class="line"><span class="variable">$strlen</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$text</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">1</span>; <span class="variable">$i</span> &lt;= <span class="variable">$strlen</span>; <span class="variable">$i</span> = <span class="variable">$i</span> + <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="variable">$active_key</span> = <span class="title function_ invoke__">substr</span>( <span class="variable">$text</span>, (<span class="variable">$i</span>-<span class="number">1</span>), <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$i</span> == <span class="variable">$strlen</span>) &#123;</span><br><span class="line">        <span class="variable">$code_array_b</span> = <span class="keyword">array</span>(<span class="string">&quot;0&quot;</span>=&gt;<span class="string">&quot;123122&quot;</span>,<span class="string">&quot;1&quot;</span>=&gt;<span class="string">&quot;123221&quot;</span>,<span class="string">&quot;2&quot;</span>=&gt;<span class="string">&quot;223211&quot;</span>,<span class="string">&quot;3&quot;</span>=&gt;<span class="string">&quot;221132&quot;</span>,<span class="string">&quot;4&quot;</span>=&gt;<span class="string">&quot;221231&quot;</span>,<span class="string">&quot;5&quot;</span>=&gt;<span class="string">&quot;213212&quot;</span>,<span class="string">&quot;6&quot;</span>=&gt;<span class="string">&quot;223112&quot;</span>,<span class="string">&quot;7&quot;</span>=&gt;<span class="string">&quot;312131&quot;</span>,<span class="string">&quot;8&quot;</span>=&gt;<span class="string">&quot;311222&quot;</span>,<span class="string">&quot;9&quot;</span>=&gt;<span class="string">&quot;321122&quot;</span>);</span><br><span class="line">        <span class="variable">$code_values_b</span> = <span class="keyword">array</span>(<span class="string">&quot;0&quot;</span>=&gt;<span class="number">16</span>,<span class="string">&quot;1&quot;</span>=&gt;<span class="number">17</span>,<span class="string">&quot;2&quot;</span>=&gt;<span class="number">18</span>,<span class="string">&quot;3&quot;</span>=&gt;<span class="number">19</span>,<span class="string">&quot;4&quot;</span>=&gt;<span class="number">20</span>,<span class="string">&quot;5&quot;</span>=&gt;<span class="number">21</span>,<span class="string">&quot;6&quot;</span>=&gt;<span class="number">22</span>,<span class="string">&quot;7&quot;</span>=&gt;<span class="number">23</span>,<span class="string">&quot;8&quot;</span>=&gt;<span class="number">24</span>,<span class="string">&quot;9&quot;</span>=&gt;<span class="number">25</span>);</span><br><span class="line">        <span class="variable">$code_string</span> .= <span class="variable">$code_array</span>[<span class="string">&#x27;CODE B&#x27;</span>] . <span class="variable">$code_array_b</span>[<span class="variable">$active_key</span>];</span><br><span class="line">        <span class="variable">$chksum</span> += <span class="variable">$code_values</span>[<span class="string">&#x27;CODE B&#x27;</span>] * (<span class="variable">$i</span> + <span class="number">1</span>) / <span class="number">2</span> + <span class="variable">$code_values_b</span>[<span class="variable">$active_key</span>] * (<span class="variable">$i</span> + <span class="number">3</span>) / <span class="number">2</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$code_string</span> .= <span class="variable">$code_array</span>[<span class="variable">$active_key</span>];</span><br><span class="line">        <span class="variable">$chksum</span> += <span class="variable">$code_values</span>[<span class="variable">$active_key</span>] * (<span class="variable">$i</span> + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$code_string</span> .= <span class="variable">$code_array</span>[<span class="variable">$code_keys</span>[<span class="variable">$chksum</span> % <span class="number">103</span>]];</span><br><span class="line"><span class="variable">$code_string</span> = <span class="string">&quot;211232&quot;</span> . <span class="variable">$code_string</span> . <span class="string">&quot;2331112&quot;</span>;</span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年04月20日 22:40</p>
+        <p>原始链接： <a class="post-url" href="/posts/c150126e/" title="PHP条形码函数">https://xiaguochang.github.io/posts/c150126e/</a></p>
+        <footer>
+            <a href="https://xiaguochang.github.io">
+                <img src="/images/logo.png" alt="XiaGuochang">
+                XiaGuochang
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xiaguochang.github.io/posts/c150126e/&title=《PHP条形码函数》 — XiaGuochang's Blog&pic=/images/banner.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xiaguochang.github.io/posts/c150126e/&title=《PHP条形码函数》 — XiaGuochang's Blog&source=这是一个技术菜鸟的博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaguochang.github.io/posts/c150126e/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP条形码函数》 — XiaGuochang's Blog&url=https://xiaguochang.github.io/posts/c150126e/&via=https://xiaguochang.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xiaguochang.github.io/posts/c150126e/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://xiaguochang.github.io/posts/c150126e/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/PHP/" class="color4">PHP</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PHP"><span class="post-toc-text">PHP</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/posts/f9f311a7/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          坐标和跨窗口通信
+        
+      </span>
+    </a>
+  
+  
+    <a href="/posts/bde46b03/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">PHP随机字符串</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2024 XiaGuochang<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://xiaguochang.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/CSS/">CSS</a><a class="category-link" href="/categories/CSS/HTML/">HTML</a><a class="category-link" href="/categories/CSS/HTML/JavaScript/">JavaScript</a><a class="category-link" href="/categories/DEMO/">DEMO</a><a class="category-link" href="/categories/Jquery/">Jquery</a><a class="category-link" href="/categories/Jquery/PHP/">PHP</a><a class="category-link" href="/categories/Layui/">Layui</a><a class="category-link" href="/categories/Layui/JavaScript/">JavaScript</a><a class="category-link" href="/categories/MYSQL/">MYSQL</a><a class="category-link" href="/categories/PHP/">PHP</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/BUTTON/" style="font-size: 10px;">BUTTON</a> <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/DEMO/" style="font-size: 10px;">DEMO</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Layui/" style="font-size: 10px;">Layui</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/NAV/" style="font-size: 10px;">NAV</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Progress/" style="font-size: 10px;">Progress</a> <a href="/tags/SWITCH/" style="font-size: 10px;">SWITCH</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/BUTTON/" style="font-size: 10px;">BUTTON</a> <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/DEMO/" style="font-size: 10px;">DEMO</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Layui/" style="font-size: 10px;">Layui</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/NAV/" style="font-size: 10px;">NAV</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Progress/" style="font-size: 10px;">Progress</a> <a href="/tags/SWITCH/" style="font-size: 10px;">SWITCH</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords" autocomplete="off">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-200},"mobile":{"show":false},"log":false});</script></body>
+</html>
