@@ -19,16 +19,19 @@
     <script type="text/javascript">
         const img = document.querySelector('.img');
 
+        // 计算浏览器toolbar的高度
         function barHeight(){
             return window.outerHeight - window.innerHeight;
         }
 
+        // 计算图片在屏幕的坐标
         function clientToScreen(x, y){
             let screenX = x + window.screenX;
             let screenY = y + window.screenY + barHeight();
             return [screenX, screenY];
         }
 
+        // 计算图片在浏览器中的坐标
         function screenToClient(x, y){
             let clientX = x - window.screenX;
             let clientY = y - window.screenY - barHeight();
@@ -36,6 +39,7 @@
         }
 
         const channel = new BroadcastChannel("img")
+        // 接收坐标信息，并计算当前浏览器图片坐标
         channel.onmessage = (e)=>{
             let [x, y] = screenToClient(...e.data)
             img.style.left = x + 'px';
@@ -43,14 +47,17 @@
         };
 
         img.onmousedown = (e)=>{
+            // 计算鼠标在图片中的坐标下x,y
             let x = e.pageX - img.offsetLeft;
             let y = e.pageY - img.offsetTop;
             window.onmousemove = (e)=>{
+                // 计算图片当前拖动到的位置cx,cy
                 let cx = e.pageX - x;
                 let cy = e.pageY - y;
                 img.style.left = cx + 'px';
                 img.style.top = cy + 'px';
                 let point = clientToScreen(cx, cy);
+                // 发送点坐标到其他窗口
                 channel.postMessage(point)
             };
             window.onmouseup = (e)=>{
@@ -59,6 +66,7 @@
             };
         };
 
+        // 根据参数name来决定图片
         function init(){
             let url = new URL(location.href);
             let name = url.searchParams.get('name');
